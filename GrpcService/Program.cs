@@ -104,3 +104,21 @@ app.MapPost("/sendandmonitor", async (List<DataPointDto> points) =>
 
 
 app.Run();
+
+
+
+static async Task ShowLoader(string message, CancellationToken token)
+{
+    var spinner = new[] { "|", "/", "-", "\\" };
+    int counter = 0;
+
+    while (!token.IsCancellationRequested)
+    {
+        Console.Write($"\r{message} {spinner[counter]}");
+        counter = (counter + 1) % spinner.Length;
+        await Task.Delay(100, token);
+    }
+
+    Console.WriteLine(); // move to next line after done
+}
+
