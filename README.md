@@ -37,9 +37,7 @@ We implemented both **gRPC services** and **REST endpoints** with equivalent fun
 ## 📊 Benchmark Results
 
 ### Example Output
-
-<img width="813" height="151" alt="image" src="https://github.com/Grpc/GrpcService/GrpcClient/result.png" />
-
+![Screenshot](GrpcClient/result.png)
 
 ---
 
@@ -99,7 +97,5 @@ We implemented both **gRPC services** and **REST endpoints** with equivalent fun
 - For **scalable, efficient, and real-time systems**, gRPC is the better choice.  
 - For **simple, human-readable APIs**, REST remains valuable.  
 - The right choice depends on your use case: **use gRPC when performance and streaming matter, use REST when simplicity and accessibility matter.**
-
-$
 
 ---
