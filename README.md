@@ -59,6 +59,26 @@ We implemented both **gRPC services** and **REST endpoints** with equivalent fun
 
 ---
 
+## 🌐 Why gRPC Uses HTTP/2
+
+HTTP/2 is the application-layer protocol gRPC uses to frame and multiplex requests/responses.
+This gives gRPC features like multiplexed streams, header compression, and flow control.
+Underneath HTTP/2, it’s still TCP.
+HTTP/2 itself runs over TCP (usually port 443 for TLS, or 80 for plaintext).
+So when you make a gRPC call, the actual bytes are transported over a TCP connection, but they’re structured using HTTP/2 frames.
+
+gRPC is built on top of **HTTP/2** because it provides features that are essential for modern, high‑performance RPC:
+
+- **Multiplexing**: Multiple requests and responses can share a single TCP connection without blocking each other.
+- **Bidirectional streaming**: Both client and server can send messages independently over the same connection.
+- **Header compression (HPACK)**: Reduces overhead by compressing repeated metadata.
+- **Persistent connections**: Eliminates the cost of repeatedly opening and closing TCP connections.
+- **Flow control**: Fine‑grained control over how data is sent, improving efficiency for large streams.
+
+These features make HTTP/2 the perfect foundation for gRPC’s **low‑latency, high‑throughput, streaming‑friendly communication model**.
+
+---
+
 ## 🧪 Lessons Learned
 
 - **Per-message latency** can be misleading when payloads are tiny — REST may look “faster” because of parsing overhead.
